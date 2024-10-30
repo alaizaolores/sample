@@ -1,0 +1,175 @@
+npx create-expo-app@latest –template
+npm install react-native-vector-icons
+npx react-native link react-native-vector-icons (Optional)
+
+App.js
+import React from 'react';
+import UserProfile from './UserProfile'; // Adjusted the path if
+`UserProfile.js` is directly in the root
+
+export default function App() {
+return <UserProfile />;
+}
+
+UserProfile.js
+import React from 'react';
+import { SafeAreaView, View, Text, Image, TextInput, TouchableOpacity,
+StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import
+FontAwesome icons
+const UserProfile = () => {
+return (
+<SafeAreaView style={styles.container}>
+{/* Header */}
+<View style={styles.header}>
+<TouchableOpacity style={styles.iconButton}>
+<Icon name="arrow-left" size={20} color="#fff" />
+</TouchableOpacity>
+<Text style={styles.headerTitle}>Profile</Text>
+<TouchableOpacity style={styles.iconButton}>
+<Icon name="paper-plane" size={20} color="#fff" />
+</TouchableOpacity>
+</View>
+{/* Profile Picture */}
+<Image
+source={require('./assets/mikha.jpg')} // Updated path to match
+the structure
+style={styles.profileImage}
+/>
+
+{/* Name and Stats */}
+<Text style={styles.nameText}>Mikha Lim</Text>
+<View style={styles.statsContainer}>
+<View style={styles.stat}>
+<Text style={styles.statValue}>45</Text>
+<Text style={styles.statValue}>Clients</Text>
+<Text style={styles.statLabel}>Managed</Text>
+</View>
+<View style={styles.stat}>
+<Text style={styles.statValue}>20</Text>
+<Text style={styles.statValue}>Projects</Text>
+<Text style={styles.statLabel}>Deployed</Text>
+
+</View>
+<View style={styles.stat}>
+<Text style={styles.statValue}>5</Text>
+<Text style={styles.statValue}>Years</Text>
+<Text style={styles.statLabel}>Experienced</Text>
+</View>
+</View>
+{/* Buttons with Icons */}
+<TouchableOpacity style={styles.button}>
+<Icon name="user" size={20} color="#fff" style={styles.icon} />
+<Text style={styles.buttonText}>Edit Profile</Text>
+</TouchableOpacity>
+<TouchableOpacity style={styles.button}>
+<Icon name="bell" size={20} color="#fff" style={styles.icon} />
+<Text style={styles.buttonText}>Notifications</Text>
+</TouchableOpacity>
+<TouchableOpacity style={styles.button}>
+<Icon name="cog" size={20} color="#fff" style={styles.icon} />
+<Text style={styles.buttonText}>Account Settings</Text>
+</TouchableOpacity>
+{/* Newsletter Input and Subscribe Button */}
+<TextInput
+style={styles.input}
+placeholder="Write here inside the newsletter..."
+/>
+<TouchableOpacity style={styles.button}>
+<Icon name="paper-plane" size={20} color="#fff"
+style={styles.icon} />
+<Text style={styles.buttonText}>Subscribe</Text>
+</TouchableOpacity>
+{/* Footer */}
+<Text style={styles.versionText}>Version 1.0.0</Text>
+</SafeAreaView>
+);
+};
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+alignItems: 'center',
+backgroundColor: '#fff',
+paddingTop: 20,
+},
+header: {
+backgroundColor: '#a933c8',
+width: '100%',
+paddingVertical: 15,
+flexDirection: 'row',
+alignItems: 'center',
+justifyContent: 'space-between', // Align items to space them out
+paddingHorizontal: 20, // Add some horizontal padding
+},
+headerTitle: {
+color: '#fff',
+fontSize: 18,
+fontWeight: 'bold',
+},
+profileImage: {
+width: 100,
+height: 100,
+borderRadius: 50,
+borderWidth: 4,
+borderColor: '#a933c8',
+marginTop: 10,
+},
+nameText: {
+fontSize: 20,
+fontWeight: 'bold',
+marginTop: 10,
+},
+statsContainer: {
+flexDirection: 'row',
+marginVertical: 15,
+justifyContent: 'space-around',
+width: '80%',
+},
+stat: {
+alignItems: 'center',
+},
+statValue: {
+fontSize: 18,
+fontWeight: 'bold',
+},
+statLabel: {
+fontSize: 12,
+color: 'gray',
+},
+button: {
+backgroundColor: '#a933c8',
+width: '65%',
+padding: 10,
+alignItems: 'flex-start', // Align text to the left
+borderRadius: 5,
+marginVertical: 5,
+flexDirection: 'row', // Align icon and text in a row
+},
+icon: {
+marginRight: 8, // Space between icon and text
+},
+buttonText: {
+color: '#fff',
+fontSize: 16,
+},
+input: {
+borderColor: 'gray',
+borderWidth: 1,
+borderRadius: 5,
+width: '80%',
+padding: 10,
+marginVertical: 10,
+},
+versionText: {
+marginTop: 13,
+color: 'gray',
+},
+iconButton: {
+marginHorizontal: 1, // Space around icons
+},
+});
+export default UserProfile;
+
+
+
